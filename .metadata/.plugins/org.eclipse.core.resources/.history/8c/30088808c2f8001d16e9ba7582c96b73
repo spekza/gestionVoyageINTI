@@ -1,0 +1,6 @@
+package com.inti.services.impl;
+
+@Service
+public class DestinationService implements IDestinationService{
+
+}
