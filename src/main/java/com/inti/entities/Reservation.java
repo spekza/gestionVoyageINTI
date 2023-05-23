@@ -13,18 +13,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "RESERVATIONS", schema = "gestion_voyage_db")
-public class Reservation implements Serializable{
+public class Reservation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReservation;
-	
+
 	private Date dateReservation;
 	private int nbJours;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_hotel")
 	private Hotel hotel;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_hotel")
 	private Voyageur voyageur;
@@ -67,6 +67,7 @@ public class Reservation implements Serializable{
 
 	public void setVoyageur(Voyageur voyageur) {
 		this.voyageur = voyageur;
+
 	}
 
 	@Override
@@ -75,7 +76,4 @@ public class Reservation implements Serializable{
 				+ nbJours + "]";
 	}
 
-	
-	
-	
 }
