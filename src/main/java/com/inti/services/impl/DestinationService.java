@@ -22,7 +22,7 @@ public class DestinationService implements IDestinationService{
 
 	@Override
 	public Destination findOne(Long id) {
-		return destinationRepository.findById(id);
+		return destinationRepository.findById(id).get();
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class DestinationService implements IDestinationService{
 
 	@Override
 	public void delete(Long id) {
-		destinationRepository.delete(id);
+		destinationRepository.deleteById(id);
 		
 	}
 
