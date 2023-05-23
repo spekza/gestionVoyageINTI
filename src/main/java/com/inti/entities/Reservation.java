@@ -1,52 +1,79 @@
 package com.inti.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Reservation {
-	private Long idReservationn;
-	private Date dateReservationn;
-	private int nbJourss;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-	public Reservation() {
-		super();
+@Entity
+@Table(name = "RESERVATIONS", schema = "gestion_voyage_db")
+public class Reservation implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idReservation;
+
+	private Date dateReservation;
+	private int nbJours;
+
+	@ManyToOne
+	@JoinColumn(name = "id_hotel")
+	private Hotel hotel;
+
+	@ManyToOne
+	@JoinColumn(name = "id_hotel")
+	private Voyageur voyageur;
+
+	public Long getIdReservation() {
+		return idReservation;
 	}
 
-	public Reservation(Date dateReservationn, int nbJourss) {
-		super();
-		this.dateReservationn = dateReservationn;
-		this.nbJourss = nbJourss;
+	public void setIdReservation(Long idReservation) {
+		this.idReservation = idReservation;
 	}
 
-	public Long getIdReservationn() {
-		return idReservationn;
+	public Date getDateReservation() {
+		return dateReservation;
 	}
 
-	public void setIdReservationn(Long idReservationn) {
-		this.idReservationn = idReservationn;
+	public void setDateReservation(Date dateReservation) {
+		this.dateReservation = dateReservation;
 	}
 
-	public Date getDateReservationn() {
-		return dateReservationn;
+	public int getNbJours() {
+		return nbJours;
 	}
 
-	public void setDateReservationn(Date dateReservationn) {
-		this.dateReservationn = dateReservationn;
+	public void setNbJours(int nbJours) {
+		this.nbJours = nbJours;
 	}
 
-	public int getNbJourss() {
-		return nbJourss;
+	public Hotel getHotel() {
+		return hotel;
 	}
 
-	public void setNbJourss(int nbJourss) {
-		this.nbJourss = nbJourss;
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	public Voyageur getVoyageur() {
+		return voyageur;
+	}
+
+	public void setVoyageur(Voyageur voyageur) {
+		this.voyageur = voyageur;
+
 	}
 
 	@Override
 	public String toString() {
-		return "Reservation [idReservationn=" + idReservationn + ", dateReservationn=" + dateReservationn
-				+ ", nbJourss=" + nbJourss + "]";
+		return "Reservation [idReservation=" + idReservation + ", dateReservation=" + dateReservation + ", nbJours="
+				+ nbJours + "]";
 	}
-	
-	
 
 }
